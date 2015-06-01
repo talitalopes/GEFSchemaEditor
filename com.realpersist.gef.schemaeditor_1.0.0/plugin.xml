@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin
+   id="com.realpersist.gef.schemaeditor"
+   name="Testeditor Plug-in"
+   version="1.0.0"
+   provider-name=""
+   class="com.realpersist.gef.editor.SchemaDiagramPlugin">
+
+   <runtime>
+      <library name="schemaeditor.jar">
+         <export name="*"/>
+      </library>
+   </runtime>
+
+   <requires>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.gef"/>
+      <import plugin="org.eclipse.ui.views"/>
+      <import plugin="org.eclipse.gef.examples.flow"/>
+      <import plugin="org.eclipse.gef.examples.logic"/>
+      <import plugin="org.eclipse.ui.ide"/>
+   </requires>
+   
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            name="%editor.name"
+            icon="icons/editor.gif"
+            extensions="schema"
+            class="com.realpersist.gef.editor.SchemaDiagramEditor"
+            contributorClass="com.realpersist.gef.action.SchemaActionBarContributor"
+            id="Schema Editor">
+      </editor>
+   </extension>
+   
+  <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            name="GEF (Graphical Editing Framework)"
+            parentCategory="org.eclipse.ui.Examples"
+            id="org.eclipse.gef.examples">
+      </category>
+      <wizard
+            availableAsShortcut="true"
+            name="Schema Diagram Editor"
+            icon="icons/editor.gif"
+            category="org.eclipse.ui.Examples/org.eclipse.gef.examples"
+            class="com.realpersist.gef.editor.wizard.SchemaDiagramWizard"
+            id="com.realpersist.gef.editor.wizard.wizard.new.file">
+         <description>
+           	Wizard to create an empty or pre-populated schema diagram file
+         </description>
+         <selection
+               class="org.eclipse.core.resources.IResource">
+         </selection>
+      </wizard>
+   </extension>
+  
+
+</plugin>
